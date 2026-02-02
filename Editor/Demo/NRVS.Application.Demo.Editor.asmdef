@@ -1,0 +1,23 @@
+{
+    "name": "NRVS.Application.Demo.Editor",
+    "rootNamespace": "NRVS.Application.Demo.Editor",
+    "references": [
+        "GUID:437b2184bacff1240898755753882399",
+        "GUID:f64c9ebcd7899c3448a08dc9f9ddbe30",
+        "GUID:3b7cf88e9d6729441884290e764f086b",
+        "GUID:14165214884ae4a619bfb290f28194a7",
+        "GUID:29492541a59d04a81b47a7f225e8a22d",
+        "GUID:607e5fc428cee124e9280c8cd460767b"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
