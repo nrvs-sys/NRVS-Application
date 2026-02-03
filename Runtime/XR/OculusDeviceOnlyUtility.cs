@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class OculusDeviceOnlyUtility : MonoBehaviour
 {
+#if ENABLE_OCULUS_SUPPORT
 	[Header("Settings")]
 	public OVRPlugin.SystemHeadset oculusDevice;
 
@@ -73,4 +74,11 @@ public class OculusDeviceOnlyUtility : MonoBehaviour
 
 		return headset == oculusDevice;
 	}
+#else
+	private void OnEnable()
+	{
+		Debug.LogWarning("Oculus Device Only Utility requires Oculus Integration package to be installed and enabled in Player Settings.");
+		gameObject.SetActive(false);
+	}
+#endif
 }

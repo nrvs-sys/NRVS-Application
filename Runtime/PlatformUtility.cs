@@ -30,6 +30,7 @@ public class PlatformUtility : MonoBehaviour
 
 	private void Start()
 	{
+#if ENABLE_OCULUS_SUPPORT
 #if UNITY_EDITOR && UNITY_ANDROID
 		if (logToConsole)
 			Debug.Log("[PlatformUtility] Detected Android platform in Editor, simulating " + androidEditorPlatform);
@@ -91,5 +92,11 @@ public class PlatformUtility : MonoBehaviour
 			// Assume PC
 			onPC?.Invoke();
 		}
+#else
+        if (logToConsole)
+			Debug.Log("[PlatformUtility] Oculus support not enabled, assuming PC platform");
+		// Assume PC
+		onPC?.Invoke();
+#endif
 	}
 }
