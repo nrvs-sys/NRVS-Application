@@ -6,11 +6,7 @@ public static class DemoModeMenuUtility
 {
     const string symbolDemoMode = "DEMO_MODE";
 
-    static string metaAppId = 8066310016739916.ToString();
-    static string metaDemoAppId = 23999919236330126.ToString();
-
     public static bool IsDemoModeActive() => GetSymbols().Contains(symbolDemoMode);
-    public static bool IsDemoModeAppIdActive() => Oculus.Platform.PlatformSettings.MobileAppID == metaDemoAppId;
 
     public static void SetDemoMode(bool active)
     {
@@ -25,11 +21,6 @@ public static class DemoModeMenuUtility
         }
         SetSymbols(symbols);
     }
-
-    public static void SetDemoModeAppId() => Oculus.Platform.PlatformSettings.MobileAppID = metaDemoAppId;
-
-    public static void SetOriginalAppId() =>
-        Oculus.Platform.PlatformSettings.MobileAppID = metaAppId;
 
     #region helpers
 
@@ -74,26 +65,6 @@ public static class DemoModeMenuUtility
     static bool ToggleDemoModeValidate()
     {
         Menu.SetChecked(menuPathToggle + "/Toggle Demo Mode", IsDemoModeActive());
-        return true;
-    }
-
-    [MenuItem(menuPathToggle + "/Toggle Demo Mode App ID", priority = menuPriority + 1)]
-    static void ToggleDemoModeAppId()
-    {
-        if (IsDemoModeAppIdActive())
-        {
-            SetOriginalAppId();
-        }
-        else
-        {
-            SetDemoModeAppId();
-        }
-    }
-
-    [MenuItem(menuPathToggle + "/Toggle Demo Mode App ID", true)]
-    static bool ToggleDemoModeAppIdValidate()
-    {
-        Menu.SetChecked(menuPathToggle + "/Toggle Demo Mode App ID", IsDemoModeAppIdActive());
         return true;
     }
 
