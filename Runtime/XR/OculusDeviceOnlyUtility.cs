@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class OculusDeviceOnlyUtility : MonoBehaviour
 {
-#if ENABLE_OCULUS_SUPPORT
+#if PLAYERPLATFORM_OCULUS
 	[Header("Settings")]
 	public OVRPlugin.SystemHeadset oculusDevice;
 

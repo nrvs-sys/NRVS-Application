@@ -30,7 +30,7 @@ public class PlatformUtility : MonoBehaviour
 
 	private void Start()
 	{
-#if ENABLE_OCULUS_SUPPORT
+#if PLAYERPLATFORM_OCULUS
 #if UNITY_EDITOR && UNITY_ANDROID
 		if (logToConsole)
 			Debug.Log("[PlatformUtility] Detected Android platform in Editor, simulating " + androidEditorPlatform);
