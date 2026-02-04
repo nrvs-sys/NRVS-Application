@@ -77,7 +77,8 @@ public class Boot : MonoBehaviour
 
     void Awake()
     {
-        xrSplash?.SetActive(false);
+        if (xrSplash != null)
+            xrSplash.SetActive(false);
     }
 
 
@@ -106,7 +107,7 @@ public class Boot : MonoBehaviour
 #else
 
 #if UNITY_EDITOR
-        initializeXR = initializeXRInEditor.Value && ParrelSyncManager.type == ParrelSyncManager.ParrelInstanceType.Main;
+        initializeXR = initializeXRInEditor != null && initializeXRInEditor.Value && ParrelSyncManager.type == ParrelSyncManager.ParrelInstanceType.Main;
 #else
 #if PLAYERPLATFORM_OCULUS
         initializeXR = true;
@@ -153,7 +154,8 @@ public class Boot : MonoBehaviour
             yield return WaitForXROriginReady();
 
             // Enable the Splash Screen
-            xrSplash?.SetActive(true);
+            if (xrSplash != null)
+                xrSplash.SetActive(true);
 
             // Wait a moment to allow the splash screen to Fade In
             yield return new WaitForSeconds(0.5f);
@@ -222,8 +224,10 @@ public class Boot : MonoBehaviour
         }
 
         // Disable the boot camera and splash screen
-        bootXRRig?.SetActive(false);
-        xrSplash?.SetActive(false);
+        if (bootXRRig != null)
+            bootXRRig.SetActive(false);
+        if (xrSplash != null)
+            xrSplash.SetActive(false);
 
         // Allow recentering after the initial setup
         if (xrInitialized)
