@@ -77,7 +77,7 @@ public class Boot : MonoBehaviour
 
     void Awake()
     {
-        xrSplash.SetActive(false);
+        xrSplash?.SetActive(false);
     }
 
 
