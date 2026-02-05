@@ -328,6 +328,11 @@ public class Boot : MonoBehaviour
     // Waits for XR subsystems to be running and for head pose to be valid for a couple frames.
     private IEnumerator WaitForXROriginReady()
     {
+        if (bootXROrigin == null)
+        {
+            Debug.LogWarning("Boot XROrigin reference is missing. Skipping XR Origin check.");
+            yield break;
+        }
 
         XRInputSubsystem input = null;
         XRDisplaySubsystem display = null;
@@ -353,7 +358,7 @@ public class Boot : MonoBehaviour
         {
             Debug.LogError("XR subsystems failed to start or camera not found.");
             yield break;
-        } 
+        }
 
         // Ensure tracking origin is configured
         var supported = input.GetSupportedTrackingOriginModes();
